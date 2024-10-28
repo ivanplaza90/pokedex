@@ -22,7 +22,7 @@ public class GetAllPokemonFeatureTest {
     private MockMvc mockMvc;
     @Test
     void get_all_pokemon() throws Exception {
-        mockMvc.perform(get("/pokemons")
+        mockMvc.perform(get("/pokemon")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
