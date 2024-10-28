@@ -9,7 +9,7 @@ For building and running the application you need:
 
 ## Running the application locally
 
-Execute the `main` method in the `com.ivan.funnelOrchestrator.FunnelOrchestratorApplication` class from your IDE.
+Execute the `main` method in the `com.ivan.pokedex.PokedexApplication` class from your IDE.
 
 Or using gradle:
 
