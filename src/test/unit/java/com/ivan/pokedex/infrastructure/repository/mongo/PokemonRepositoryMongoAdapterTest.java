@@ -1,7 +1,7 @@
 package com.ivan.pokedex.infrastructure.repository.mongo;
 
-import com.ivan.pokedex.application.domain.Pokemon;
-import com.ivan.pokedex.application.domain.PokemonType;
+import com.ivan.pokedex.domain.Pokemon;
+import com.ivan.pokedex.domain.PokemonType;
 import com.ivan.pokedex.infrastructure.repository.mongo.model.PokemonEntity;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;

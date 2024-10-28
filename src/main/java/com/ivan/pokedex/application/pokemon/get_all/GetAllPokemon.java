@@ -1,6 +1,6 @@
 package com.ivan.pokedex.application.pokemon.get_all;
 
-import com.ivan.pokedex.application.domain.PokemonRepository;
+import com.ivan.pokedex.domain.PokemonRepository;
 
 import java.util.List;
 import java.util.stream.Collectors;

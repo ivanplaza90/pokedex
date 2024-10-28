@@ -1,8 +1,8 @@
 package com.ivan.pokedex.infrastructure.repository.mongo;
 
-import com.ivan.pokedex.application.domain.Pokemon;
-import com.ivan.pokedex.application.domain.PokemonRepository;
-import com.ivan.pokedex.application.domain.PokemonType;
+import com.ivan.pokedex.domain.Pokemon;
+import com.ivan.pokedex.domain.PokemonRepository;
+import com.ivan.pokedex.domain.PokemonType;
 
 import java.util.List;
 import java.util.stream.Collectors;

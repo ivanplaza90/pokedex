@@ -1,4 +1,4 @@
-package com.ivan.pokedex.application.domain;
+package com.ivan.pokedex.domain;
 
 import java.util.List;
 

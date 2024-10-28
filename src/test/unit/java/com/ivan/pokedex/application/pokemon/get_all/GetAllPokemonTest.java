@@ -1,8 +1,8 @@
 package com.ivan.pokedex.application.pokemon.get_all;
 
-import com.ivan.pokedex.application.domain.Pokemon;
-import com.ivan.pokedex.application.domain.PokemonRepository;
-import com.ivan.pokedex.application.domain.PokemonType;
+import com.ivan.pokedex.domain.Pokemon;
+import com.ivan.pokedex.domain.PokemonRepository;
+import com.ivan.pokedex.domain.PokemonType;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
