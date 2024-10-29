@@ -1,4 +1,4 @@
-package com.ivan.pokedex;
+package com.ivan.pokedex.infrastructure.configuration.spring;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: pokedex
+
+  data:
+    mongodb:
+      uri: mongodb://the-user:the-password@localhost:27017/pokedex
