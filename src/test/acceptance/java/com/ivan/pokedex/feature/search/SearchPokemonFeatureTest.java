@@ -72,7 +72,27 @@ public class SearchPokemonFeatureTest {
         final PokemonEntity secondPokemon = new PokemonEntity(2, "second_pokemon", "WATER");
         pokemonMongoRepository.insert(List.of(firstPokemon, secondPokemon));
 
-        mockMvc.perform(get("/pokemon?type=water")
+        mockMvc.perform(get("/pokemon?type=WATER")
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .accept(MediaType.APPLICATION_JSON))
+                .andDo(print())
+                .andExpect(status().isOk())
+
+                .andExpect(jsonPath("$").isNotEmpty())
+                .andExpect(jsonPath("$").isArray())
+                .andExpect(jsonPath("$", hasSize(1)))
+                .andExpect(jsonPath("$[0].number").value(secondPokemon.number()))
+                .andExpect(jsonPath("$[0].name").value(secondPokemon.name()))
+                .andExpect(jsonPath("$[0].type").value(secondPokemon.type()));
+    }
+
+    @Test
+    void given_name_criteria_and_pokemon_stored_when_i_get_all_pokemon_i_received_the_pokemon() throws Exception {
+        final PokemonEntity firstPokemon = new PokemonEntity(1, "first_pokemon", "FIRE");
+        final PokemonEntity secondPokemon = new PokemonEntity(2, "second_pokemon", "WATER");
+        pokemonMongoRepository.insert(List.of(firstPokemon, secondPokemon));
+
+        mockMvc.perform(get("/pokemon?name=second")
                         .contentType(MediaType.APPLICATION_JSON)
                         .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
