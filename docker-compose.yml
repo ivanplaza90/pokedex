@@ -5,10 +5,12 @@ services:
     image: mongo
     container_name: mongo
     restart: always
+#    volumes:
+#      - type: bind
+#        source: ./docker/mongodb
+#        target: /docker-entrypoint.init.d/
     volumes:
-      - type: bind
-        source: ./docker/mongodb
-        target: /docker-entrypoint.init.d/
+      - ./docker/mongodb/init.js:/docker-entrypoint-initdb.d/mongo-init.js:ro
     environment:
       MONGO_INITDB_ROOT_USERNAME: the-user
       MONGO_INITDB_ROOT_PASSWORD: the-password
