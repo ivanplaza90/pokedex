@@ -44,7 +44,7 @@ Or using gradle:
 ## Change Log
 
 ## Version 0.2.0
-* Todo
+* Add find pokemon feature
 
 ## Version 0.1.0
 * Add get all pokemon feature
