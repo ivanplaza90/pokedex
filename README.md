@@ -13,9 +13,23 @@ For building and running the application you need:
 ```
 
 There are three kind of test into the project. In order to run each one separately:
+In order to run unit tests:
+
 ```shell
-./gradlew unit | integration | acceptance
+./gradlew unit
 ```
+
+In order to run integration and acceptance test there are a docker-compose with all infrastructure dependencies. Run it as:
+
+```shell
+docker compose up -d
+```
+and then
+```shell
+./gradlew | integration | acceptance
+```
+
+Also you can run first the docker-compose and then working with the service
 
 ## Running the application locally
 
