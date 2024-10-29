@@ -29,7 +29,7 @@ and then
 ./gradlew | integration | acceptance
 ```
 
-Also you can run first the docker-compose and then working with the service
+Also, you can run first the docker-compose and then working with the service
 
 ## Running the application locally
 
@@ -41,7 +41,16 @@ Or using gradle:
 ./gradlew bootRun
 ```
 
+## Rest API documentation
+
+Into document directory there is a rest-api.yml file with the open api documentation.
+You can open it in a swagger editor ir in postman directly in order to have all the rest endpoints ready to be launched 
+
+
 ## Change Log
+
+## Version 0.2.0
+* Add find pokemon feature
 
 ## Version 0.1.0
 * Add get all pokemon feature
