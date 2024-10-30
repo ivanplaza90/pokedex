@@ -47,9 +47,10 @@ class PokemonRepositoryMongoAdapterTest {
         final List<Pokemon> response = adapter.search(criteria);
 
         assertThat(response)
-                .asList().hasSize(repositoryResponse.size())
-                .element(0)
-                .isEqualTo(new Pokemon(pokemonEntity.number(), pokemonEntity.name(), PokemonType.valueOf(pokemonEntity.type())));
+            .asList().hasSize(repositoryResponse.size())
+            .element(0)
+            .isEqualTo(new Pokemon(pokemonEntity.number(), pokemonEntity.name(),
+                PokemonType.valueOf(pokemonEntity.type()), pokemonEntity.combatPoints(), pokemonEntity.healthPoints()));
 
         verify(mongoTemplate).find(eq(query), eq(PokemonEntity.class));
         verifyNoMoreInteractions(mongoTemplate);
@@ -69,9 +70,10 @@ class PokemonRepositoryMongoAdapterTest {
         final List<Pokemon> response = adapter.search(criteria);
 
         assertThat(response)
-                .asList().hasSize(repositoryResponse.size())
-                .element(0)
-                .isEqualTo(new Pokemon(pokemonEntity.number(), pokemonEntity.name(), PokemonType.valueOf(pokemonEntity.type())));
+            .asList().hasSize(repositoryResponse.size())
+            .element(0)
+            .isEqualTo(new Pokemon(pokemonEntity.number(), pokemonEntity.name(),
+                    PokemonType.valueOf(pokemonEntity.type()), pokemonEntity.combatPoints(), pokemonEntity.healthPoints()));
 
         verify(mongoTemplate).find(eq(query), eq(PokemonEntity.class));
         verifyNoMoreInteractions(mongoTemplate);
@@ -101,13 +103,14 @@ class PokemonRepositoryMongoAdapterTest {
         assertThat(response)
             .isPresent()
             .get()
-            .isEqualTo(new Pokemon(pokemonEntity.number(), pokemonEntity.name(), PokemonType.valueOf(pokemonEntity.type())));
+                .isEqualTo(new Pokemon(pokemonEntity.number(), pokemonEntity.name(),
+                    PokemonType.valueOf(pokemonEntity.type()), pokemonEntity.combatPoints(), pokemonEntity.healthPoints()));
 
         verify(pokemonMongoRepository).findById(1);
         verifyNoInteractions(mongoTemplate);
     }
 
     private PokemonEntity mockPokemonEntity(){
-        return new PokemonEntity(1, "first_pokemon", "FIRE");
+        return new PokemonEntity(1, "first_pokemon", "FIRE", 123.56, 285.0);
     }
 }

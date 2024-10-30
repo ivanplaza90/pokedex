@@ -1,4 +1,4 @@
-package com.ivan.pokedex.domain.pokemon;
+package com.ivan.pokedex.domain.exception;
 
 public class PokemonNotFoundException extends RuntimeException {
 }

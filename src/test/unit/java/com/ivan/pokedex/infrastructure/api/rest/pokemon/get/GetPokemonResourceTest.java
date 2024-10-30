@@ -3,7 +3,7 @@ package com.ivan.pokedex.infrastructure.api.rest.pokemon.get;
 import com.ivan.pokedex.application.pokemon.get.GetPokemon;
 import com.ivan.pokedex.application.pokemon.get.GetPokemonQuery;
 import com.ivan.pokedex.application.pokemon.get.PokemonView;
-import com.ivan.pokedex.domain.pokemon.PokemonNotFoundException;
+import com.ivan.pokedex.domain.exception.PokemonNotFoundException;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;
@@ -46,10 +46,10 @@ public class GetPokemonResourceTest {
 
         assertThat(response)
             .isNotNull()
-            .isEqualTo(new PokemonDTO(pokemonView.number(), pokemonView.name(), pokemonView.type()));
+            .isEqualTo(new PokemonDTO(pokemonView.number(), pokemonView.name(), pokemonView.type(), pokemonView.combatPoints(), pokemonView.healthPoints()));
     }
 
     private PokemonView mockPokemonView(){
-        return new PokemonView(1, "first_pokemon", "any_type");
+        return new PokemonView(1, "first_pokemon", "any_type", 100.0, 250.80);
     }
 }

@@ -32,14 +32,14 @@ public class PokemonRepositoryMongoAdapter implements PokemonRepository {
         Query build = build(criteria);
         return mongoTemplate.find(build, PokemonEntity.class)
             .stream()
-            .map(entity -> new Pokemon(entity.number(), entity.name(), PokemonType.valueOf(entity.type())))
+            .map(entity -> mapPokemon(entity))
             .collect(Collectors.toList());
     }
 
     @Override
     public Optional<Pokemon> get(int pokemonNumber) {
         return pokemonMongoRepository.findById(pokemonNumber)
-            .map(entity -> new Pokemon(entity.number(), entity.name(), PokemonType.valueOf(entity.type())));
+            .map(entity -> mapPokemon(entity));
     }
 
     private Query build(final SearchPokemonCriteria criteria) {
@@ -48,5 +48,9 @@ public class PokemonRepositoryMongoAdapter implements PokemonRepository {
         criteria.name().ifPresent(value -> query.addCriteria(Criteria.where("name").regex(".*" + value + ".*")));
 
         return query;
+    }
+
+    private static Pokemon mapPokemon(PokemonEntity entity) {
+        return new Pokemon(entity.number(), entity.name(), PokemonType.valueOf(entity.type()), entity.combatPoints(), entity.healthPoints());
     }
 }

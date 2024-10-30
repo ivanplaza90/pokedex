@@ -1,5 +1,6 @@
 package com.ivan.pokedex.application.pokemon.get;
 
+import com.ivan.pokedex.domain.Pokemon;
 import com.ivan.pokedex.domain.PokemonRepository;
 
 import java.util.Optional;
@@ -16,6 +17,11 @@ public class GetPokemon implements Function<GetPokemonQuery, Optional<PokemonVie
     @Override
     public Optional<PokemonView> apply(final GetPokemonQuery getPokemonQuery) {
         return repository.get(getPokemonQuery.pokemonNumber())
-            .map(pokemon -> new PokemonView(pokemon.number(), pokemon.name(), pokemon.type().toString()));
+            .map(pokemon -> mapPokemon(pokemon));
+    }
+
+    private static PokemonView mapPokemon(Pokemon pokemon) {
+        return new PokemonView(pokemon.number(), pokemon.name(), pokemon.type().toString(), pokemon.combatPoints(),
+            pokemon.healthPoints());
     }
 }

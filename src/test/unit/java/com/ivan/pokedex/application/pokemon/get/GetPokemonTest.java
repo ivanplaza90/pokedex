@@ -45,10 +45,10 @@ public class GetPokemonTest {
         assertThat(response)
             .isPresent()
             .get()
-            .isEqualTo(new PokemonView(pokemon.number(), pokemon.name(), pokemon.type().toString()));
+            .isEqualTo(new PokemonView(pokemon.number(), pokemon.name(), pokemon.type().toString(), pokemon.combatPoints(), pokemon.healthPoints()));
     }
 
     private Pokemon mockPokemon(){
-        return new Pokemon(1, "first_pokemon", PokemonType.FIRE);
+        return new Pokemon(1, "first_pokemon", PokemonType.FIRE, 111.2, 234.9);
     }
 }

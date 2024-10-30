@@ -2,7 +2,7 @@ package com.ivan.pokedex.feature.search;
 
 import com.ivan.pokedex.infrastructure.repository.mongo.PokemonMongoRepository;
 import com.ivan.pokedex.infrastructure.repository.mongo.model.PokemonEntity;
-import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -30,7 +30,7 @@ public class GetPokemonFeature {
     @Autowired
     private PokemonMongoRepository pokemonMongoRepository;
 
-    @BeforeEach
+    @AfterEach
     void clean() {
         pokemonMongoRepository.deleteAll();
     }
@@ -47,8 +47,8 @@ public class GetPokemonFeature {
 
     @Test
     void given_a_pokemon_number_and_pokemon_stored_when_i_get_pokemon_i_received_the_pokemon() throws Exception {
-        final PokemonEntity firstPokemon = new PokemonEntity(1, "first_pokemon", "FIRE");
-        final PokemonEntity secondPokemon = new PokemonEntity(2, "second_pokemon", "WATER");
+        final PokemonEntity firstPokemon = new PokemonEntity(1, "first_pokemon", "FIRE", 100.0, 250.0);
+        final PokemonEntity secondPokemon = new PokemonEntity(2, "second_pokemon", "WATER", 150.0, 200.0);
         pokemonMongoRepository.insert(List.of(firstPokemon, secondPokemon));
 
         mockMvc.perform(get("/pokemon/2")
@@ -60,6 +60,9 @@ public class GetPokemonFeature {
                 .andExpect(jsonPath("$").isNotEmpty())
                 .andExpect(jsonPath("$.number").value(secondPokemon.number()))
                 .andExpect(jsonPath("$.name").value(secondPokemon.name()))
-                .andExpect(jsonPath("$.type").value(secondPokemon.type()));
+                .andExpect(jsonPath("$.type").value(secondPokemon.type()))
+                .andExpect(jsonPath("$.combatPoints").value(secondPokemon.combatPoints()))
+                .andExpect(jsonPath("$.healthPoints").value(secondPokemon.healthPoints()));
+
     }
 }
