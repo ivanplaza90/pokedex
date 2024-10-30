@@ -69,6 +69,6 @@ public class SearchPokemonTest {
     }
 
     private Pokemon mockPokemon(){
-        return new Pokemon(1, "first_pokemon", PokemonType.FIRE);
+        return new Pokemon(1, "first_pokemon", PokemonType.FIRE, 145.9, 346.98);
     }
 }

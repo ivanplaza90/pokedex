@@ -49,6 +49,9 @@ You can open it in a swagger editor ir in postman directly in order to have all 
 
 ## Change Log
 
+## Version 0.3.0
+* Add get pokemon detail feature
+
 ## Version 0.2.0
 * Add find pokemon feature
 

@@ -32,6 +32,27 @@ paths:
                 type: array
                 items:
                   "$ref": "#/components/schemas/PokemonDTO"
+  "/pokemon/{pokemonNumber}":
+    get:
+      tags:
+        - get-pokemon-resource
+      operationId: get
+      parameters:
+        - name: pokemonNumber
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                "$ref": "#/components/schemas/PokemonDTO"
+        '404':
+          description: Not Found
 components:
   schemas:
     PokemonDTO:

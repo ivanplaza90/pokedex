@@ -10,8 +10,9 @@ import org.springframework.data.mongodb.core.MongoTemplate;
 public class InfrastructureMongoConfiguration {
     @Bean
     public PokemonRepositoryMongoAdapter pokemonRepositoryMongoAdapter(
-            final MongoTemplate mongoTemplate
-            ) {
-        return new PokemonRepositoryMongoAdapter(mongoTemplate);
+        final MongoTemplate mongoTemplate,
+        final PokemonMongoRepository pokemonMongoRepository
+    ) {
+        return new PokemonRepositoryMongoAdapter(mongoTemplate, pokemonMongoRepository);
     }
 }
