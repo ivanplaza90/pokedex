@@ -17,9 +17,14 @@ public class PokemonRepositoryMongoAdapter implements PokemonRepository {
 
 
     private final MongoTemplate mongoTemplate;
+    private PokemonMongoRepository pokemonMongoRepository;
 
-    public PokemonRepositoryMongoAdapter(final MongoTemplate mongoTemplate) {
+    public PokemonRepositoryMongoAdapter(
+        final MongoTemplate mongoTemplate,
+        final PokemonMongoRepository pokemonMongoRepository
+    ) {
         this.mongoTemplate = mongoTemplate;
+        this.pokemonMongoRepository = pokemonMongoRepository;
     }
 
     @Override
@@ -29,6 +34,12 @@ public class PokemonRepositoryMongoAdapter implements PokemonRepository {
             .stream()
             .map(entity -> new Pokemon(entity.number(), entity.name(), PokemonType.valueOf(entity.type())))
             .collect(Collectors.toList());
+    }
+
+    @Override
+    public Optional<Pokemon> get(int pokemonNumber) {
+        return pokemonMongoRepository.findById(pokemonNumber)
+            .map(entity -> new Pokemon(entity.number(), entity.name(), PokemonType.valueOf(entity.type())));
     }
 
     private Query build(final SearchPokemonCriteria criteria) {

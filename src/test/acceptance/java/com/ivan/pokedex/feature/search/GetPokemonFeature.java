@@ -51,7 +51,7 @@ public class GetPokemonFeature {
         final PokemonEntity secondPokemon = new PokemonEntity(2, "second_pokemon", "WATER");
         pokemonMongoRepository.insert(List.of(firstPokemon, secondPokemon));
 
-        mockMvc.perform(get("/pokemon/1")
+        mockMvc.perform(get("/pokemon/2")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
                 .andDo(print())
