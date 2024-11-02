@@ -63,6 +63,5 @@ public class GetPokemonFeature {
                 .andExpect(jsonPath("$.type").value(secondPokemon.type()))
                 .andExpect(jsonPath("$.combatPoints").value(secondPokemon.combatPoints()))
                 .andExpect(jsonPath("$.healthPoints").value(secondPokemon.healthPoints()));
-
     }
 }
