@@ -1,11 +1,8 @@
 package com.ivan.pokedex.infrastructure.api.rest.trainer.pokemon.favorites.get;
 
 import com.ivan.pokedex.application.trainer.GetTrainerFavoritesPokemon;
-import org.apache.coyote.BadRequestException;
-
 
 import java.util.List;
-import java.util.Optional;
 import java.util.stream.Collectors;
 
 public class GetFavoritesPokemonResources {
