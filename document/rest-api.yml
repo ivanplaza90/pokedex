@@ -7,6 +7,29 @@ servers:
   - url: http://localhost:8080
     description: Generated server url
 paths:
+  "/trainer/{trainerId}/pokemon/favorites":
+    get:
+      tags:
+        - get-favorites-pokemon-resources
+      operationId: get
+      parameters:
+        - name: trainerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      responses:
+        '200':
+          description: OK
+          content:
+            "*/*":
+              schema:
+                type: array
+                items:
+                  "$ref": "#/components/schemas/PokemonDTO"
+        '404':
+          description: Not Found
   "/pokemon":
     get:
       tags:
@@ -36,7 +59,7 @@ paths:
     get:
       tags:
         - get-pokemon-resource
-      operationId: get
+      operationId: get_1
       parameters:
         - name: pokemonNumber
           in: path
