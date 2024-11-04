@@ -30,6 +30,28 @@ paths:
                   "$ref": "#/components/schemas/PokemonDTO"
         '404':
           description: Not Found
+    put:
+      tags:
+        - put-favorites-pokemon-resources
+      operationId: set
+      parameters:
+        - name: trainerId
+          in: path
+          required: true
+          schema:
+            type: integer
+            format: int32
+      requestBody:
+        content:
+          application/json:
+            schema:
+              "$ref": "#/components/schemas/SetTrainerFavoritesDTO"
+        required: true
+      responses:
+        '200':
+          description: OK
+        '404':
+          description: Not Found
   "/pokemon":
     get:
       tags:
@@ -78,6 +100,15 @@ paths:
           description: Not Found
 components:
   schemas:
+    SetTrainerFavoritesDTO:
+      type: object
+      properties:
+        favorites:
+          uniqueItems: true
+          type: array
+          items:
+            type: integer
+            format: int32
     PokemonDTO:
       type: object
       properties:

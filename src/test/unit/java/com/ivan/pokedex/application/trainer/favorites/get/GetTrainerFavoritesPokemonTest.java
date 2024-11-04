@@ -20,7 +20,7 @@ import static org.mockito.Mockito.when;
 public class GetTrainerFavoritesPokemonTest {
 
     private static final int TRAINER_ID = 1;
-    public static final int POKEMON_ID = 4;
+    private static final int POKEMON_ID = 4;
     @Mock
     private TrainerRepository trainerRepository;
     @Mock
