@@ -1,9 +1,10 @@
 package com.ivan.pokedex.infrastructure.configuration.spring;
 
 import com.ivan.pokedex.application.pokemon.get.GetPokemon;
-import com.ivan.pokedex.application.trainer.favorites.get.GetTrainerFavoritesPokemon;
-import com.ivan.pokedex.domain.PokemonRepository;
 import com.ivan.pokedex.application.pokemon.search.SearchPokemon;
+import com.ivan.pokedex.application.trainer.favorites.get.GetTrainerFavoritesPokemon;
+import com.ivan.pokedex.application.trainer.favorites.set.SetTrainerFavoritesPokemon;
+import com.ivan.pokedex.domain.PokemonRepository;
 import com.ivan.pokedex.domain.TrainerRepository;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -26,5 +27,10 @@ public class UseCasesConfiguration {
         final PokemonRepository pokemonRepository
     ){
         return new GetTrainerFavoritesPokemon(trainerRepository, pokemonRepository);
+    }
+
+    @Bean
+    public SetTrainerFavoritesPokemon setTrainerFavoritesPokemon(final TrainerRepository trainerRepository) {
+        return new SetTrainerFavoritesPokemon(trainerRepository);
     }
 }

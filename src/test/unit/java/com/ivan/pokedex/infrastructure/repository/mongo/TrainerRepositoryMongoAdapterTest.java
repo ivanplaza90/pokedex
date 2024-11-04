@@ -1,6 +1,5 @@
 package com.ivan.pokedex.infrastructure.repository.mongo;
 
-import ch.qos.logback.core.spi.AbstractComponentTracker;
 import com.ivan.pokedex.domain.Trainer;
 import com.ivan.pokedex.infrastructure.repository.mongo.model.TrainerEntity;
 import org.junit.jupiter.api.Test;
@@ -13,7 +12,7 @@ import java.util.Optional;
 import java.util.Set;
 
 import static org.assertj.core.api.Assertions.assertThat;
-import static org.mockito.Mockito.when;
+import static org.mockito.Mockito.*;
 
 @ExtendWith(MockitoExtension.class)
 class TrainerRepositoryMongoAdapterTest {
@@ -47,6 +46,18 @@ class TrainerRepositoryMongoAdapterTest {
             .isNotEmpty()
             .get()
             .isEqualTo(new Trainer(trainerEntity.trainerId(), trainerEntity.favorites()));
+    }
+
+    @Test
+    void save_trainer_when_mongo_repository_success() {
+        final Trainer trainer = new Trainer(1, Set.of(1, 2, 3, 4));
+        final TrainerEntity entity = new TrainerEntity(trainer.trainerId(), trainer.favorites());
+        when(trainerMongoRepository.save(entity)).thenReturn(entity);
+
+        trainerRepositoryMongoAdapter.save(trainer);
+
+        verify(trainerMongoRepository).save(entity);
+        verifyNoMoreInteractions(trainerMongoRepository);
     }
 
     private TrainerEntity mockTrainer(final Set favorites) {
