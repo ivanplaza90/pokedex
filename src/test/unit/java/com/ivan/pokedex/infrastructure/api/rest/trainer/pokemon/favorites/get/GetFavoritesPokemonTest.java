@@ -1,7 +1,7 @@
 package com.ivan.pokedex.infrastructure.api.rest.trainer.pokemon.favorites.get;
 
-import com.ivan.pokedex.application.trainer.GetTrainerFavoritesPokemon;
-import com.ivan.pokedex.application.trainer.PokemonView;
+import com.ivan.pokedex.application.trainer.favorites.get.GetTrainerFavoritesPokemon;
+import com.ivan.pokedex.application.trainer.favorites.get.PokemonView;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.mockito.InjectMocks;

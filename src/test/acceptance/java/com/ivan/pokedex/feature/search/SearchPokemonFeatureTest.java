@@ -37,8 +37,6 @@ public class SearchPokemonFeatureTest {
     }
     @Test
     void given_not_criteria_and_no_pokemon_exists_when_i_get_pokemon_i_receive_empty_list() throws Exception {
-        pokemonMongoRepository.deleteAll();
-
         mockMvc.perform(get("/pokemon")
                 .contentType(MediaType.APPLICATION_JSON)
                 .accept(MediaType.APPLICATION_JSON))
